@@ -127,34 +127,34 @@ const tl2 = gsap.timeline({
 });
 
 const tickMarkPath = document.querySelector('.tick-mark path');
-const pathLength = tickMarkPath.getTotalLength;
+const pathLength = tickMarkPath.getTotalLength();
 
-// gsap.set(tickMarkPath, {
-//   strokeDashoffset: pathLength,
-//   strokeDasharray: pathLength,
-// });
+gsap.set(tickMarkPath, {
+  strokeDashoffset: pathLength,
+  strokeDasharray: pathLength,
+});
 
-// checkbox.addEventListener('click', () => {
-//   if (checkbox.checked) {
-//     tl2.to('.checkbox-fill', { top: '0%' });
-//     tl2.fromTo(
-//       tickMarkPath,
-//       { strokeDashoffset: pathLength },
-//       { strokeDashoffset: 0 },
-//       '<50%'
-//     );
-//     tl.to('.chekcbox-label', { color: '#6391e8' }, '<');
-//   } else {
-//     tl2.to('.checkbox-fill', { top: '100%' });
-//     tl.fromTo(
-//       tickMarkPath,
-//       { strokeDashoffset: 0 },
-//       { strokeDashoffset: pathLength },
-//       '<50%'
-//     );
-//     tl.to('.chekcbox-label', { color: '#c5c5c5' }, '<');
-//   }
-// });
+checkbox.addEventListener('click', () => {
+  if (checkbox.checked) {
+    tl2.to('.checkbox-fill', { top: '0%' });
+    tl2.fromTo(
+      tickMarkPath,
+      { strokeDashoffset: pathLength },
+      { strokeDashoffset: 0 },
+      '<50%'
+    );
+    tl2.to('.checkbox-label', { color: '#6391e8' }, '<');
+  } else {
+    tl2.to('.checkbox-fill', { top: '100%' });
+    tl2.fromTo(
+      tickMarkPath,
+      { strokeDashoffset: 0 },
+      { strokeDashoffset: pathLength },
+      '<50%'
+    );
+    tl2.to('.checkbox-label', { color: '#c5c5c5' }, '<');
+  }
+});
 
 gsap.set('#eye', { transformOrigin: 'center' });
 gsap.fromTo(
