@@ -173,3 +173,56 @@ gsap.fromTo(
   { y: 0 },
   { y: -1, repeat: -1, yoyo: true, ease: 'Power2.easeOut' }
 );
+
+// form submit animation
+const button = document.querySelector('.btn');
+const tl3 = gsap.timeline({
+  defaults: {
+    duration: 0.75,
+    ease: 'Power2.easeOut',
+  },
+});
+
+button.addEventListener('click', (e) => {
+  e.preventDefault();
+  tl3.to('.contact-right, .contact-left', {
+    y: 30,
+    opacity: 0,
+    PointerEvent: 'none',
+  });
+  tl3.to(
+    'from',
+    {
+      scale: 0.8,
+    },
+    '<'
+  );
+  tl3.fromTo(
+    '.submitted',
+    {
+      opacity: 0,
+      y: 30,
+    },
+    {
+      opacity: 1,
+      y: 0,
+    }
+  );
+
+  gsap.set('#hand', { transformOrigin: 'left' });
+
+  gsap.fromTo(
+    '#hand',
+    {
+      rotation: 0,
+      y: 0,
+    },
+    {
+      rotation: -10,
+      y: 2,
+      ease: 'elastic(3, 0.3)',
+      duration: 2,
+      delay: 1,
+    }
+  );
+});
