@@ -13,6 +13,10 @@ a {
   text-decoration: none;
 }
 
+button {
+  cursor: pointer;
+}
+
 .showcase {
   min-height: 90dvh;
   display: flex;

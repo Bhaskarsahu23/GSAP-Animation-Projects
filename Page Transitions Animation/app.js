@@ -1,6 +1,7 @@
 const tlLeave = gsap.timeline({
   defaults: { duration: 0.75, ease: 'Power2.easeOut' },
 });
+
 const tlEnter = gsap.timeline({
   defaults: { duration: 0.75, ease: 'Power2.easeOut' },
 });
@@ -98,8 +99,37 @@ barba.init({
         enterAnimation(next, done, gredient);
       },
     },
+    {
+      name: 'product-transition',
+      from: { namespace: ['handbag'] },
+      to: { namespace: ['product'] },
+      enter(data) {
+        console.log(data);
+        const done = this.async();
+        let next = data.next.container;
+        productEnterAnimation(next, done);
+      },
+      leave(data) {
+        console.log(data);
+        const done = this.async();
+        let current = data.current.container;
+        productLeaveAnimation(current, done);
+      },
+    },
   ],
 });
+
+function productEnterAnimation(next, done) {
+  tlEnter.fromTo(next, { y: '100%' }, { y: '0%' });
+  tlEnter.fromTo(
+    '.card',
+    { opacity: 0, y: 50 },
+    { opacity: 1, y: 0, stagger: 0.1, onComplete: done }
+  );
+}
+function productLeaveAnimation(current, done) {
+  tlLeave.fromTo(current, { opacity: 1 }, { opacity: 0, onComplete: done });
+}
 
 // changing background gradient
 
